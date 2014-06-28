@@ -1,0 +1,79 @@
+<section data-ng-controller="ProductsController">
+    <h2>Card Info:</h2>
+    <div name="addressForm" class="form-horizontal col-md-6" role="form" novalidate>
+        <div class="form-group">
+            <label for="name" class="col-md-2 control-label">Card</label>
+            <div class="col-md-10">
+                <input type='radio' data-ng-model='billing[0].cardtype' value='Visa'>Visa
+                <input type='radio' data-ng-model='billing[0].cardtype' value='Amex'>Amex
+                <input type='radio' data-ng-model='billing[0].cardtype' value='MasterCard'>MasterCard
+                <br>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address" class="col-md-2 control-label">Name on Card</label>
+            <div class="col-md-10">
+                <input type='text' name="address" data-ng-model="billing[0].name" id="address" cols="30" rows="10" placeholder="Name on Card" class="form-control" required>
+            </div>
+        </div>
+        <!--add price, state and zip-->
+        <div class="form-group">
+            <label for="city" class="col-md-2 control-label">Card Number</label>
+            <div class="col-md-10">
+                <input type="text" name="city" data-ng-model="billing[0].number" id="city" cols="30" rows="10" placeholder="Card Number" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="state" class="col-md-2 control-label">Expires</label>
+            <div class="col-md-10">
+                <p>Month</p>
+                <select cols="30" rows="10" class="form-control" data-ng-model='billing[0].expiremonth' ng-options='m for m in months'></select><br>
+                <p>Year</p>
+                <select cols="30" rows="10" class="form-control" data-ng-model='billing[0].expireyear' ng-options='m for m in years'></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ccv" class="col-md-2 control-label">Card CCV</label>
+            <div class="col-md-10">
+                <input type='text' name="ccv" data-ng-model="cvv" id="cvv" cols="30" rows="10" placeholder="cvv" class="form-control" required>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Name</label>
+            <div class="col-md-10">
+                <input class="form-control" cols="30" rows="10" type='text' ng-model='billing[0].address[0].name' placeholder="name"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Address</label>
+            <div class="col-md-10">
+                <input class="form-control" cols="30" rows="10" type='text' ng-model='billing[0].address[0].address' placeholder="address"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">City</label>
+            <div class="col-md-10">
+                <input class="form-control" cols="30" rows="10" type='text' ng-model='billing[0].address[0].city' placeholder="city"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">State</label>
+            <div class="col-md-10">
+                <input class="form-control" cols="30" rows="10" type='text' ng-model='billing[0].address[0].state' placeholder="state"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Zipcode</label>
+            <div class="col-md-10">
+                <input class="form-control" cols="30" rows="10" type='text' ng-model='billing[0].address[0].zip' placeholder="zipcode"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+    		<span class='button' ng-click='verifyBilling(ccv)'>Verify Billing</span>
+            <span class='button' ng-click='goTo("/products")'>Continue Shopping</span>
+            </div>
+        </div>
+    </div>
+</section>

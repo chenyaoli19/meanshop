@@ -1,0 +1,31 @@
+<section data-ng-controller='ProductsController'>
+	<div class='container' ng-repeat='item in cart' ng-init='product=item.product[0]'>
+		<div class='col-md-8'>
+			<img ng-click='setProduct(product._id)' ng-src='/products/assets/img/{{product.imageFile}}Small.jpeg'>
+			<span class='price'> <em>Price:</em> {{product.price*item.quantity|currency}}</span>
+		</div>
+		<div class='col-md-4'>
+			<span class='prodName'>{{product.prodName}}</span>
+			<span>
+				<input type='text' ng-model='item.quantity'/>
+				<span>Quantity</span>
+				<span class='delete' ng-click='deleteFromCart(product._id)'><b>Remove</b></span>
+			</span>
+		</div>
+	</div>
+	<hr>
+	<div>
+		<div>
+			<p>Items Total:  {{cartTotal()|currency}}</p>
+			<hr>
+			<p>Shipping:  {{shippingPrice|currency}}</p>
+			<hr>
+			<p>Total:  {{cartTotal()+shippingPrice|currency}}</p>
+			<hr>
+		</div>		
+	</div>
+	<div>
+		<span class='button' ng-click='checkout()' ng-hide='customer.cart.length==0'>Checkout</span>
+		<span class='button' ng-click='goTo("/products")'>Continue Shopping</span>
+	</div>
+</section>

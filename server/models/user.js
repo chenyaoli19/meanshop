@@ -15,6 +15,102 @@ var validatePresenceOf = function(value) {
     return (this.provider && this.provider !== 'local') || (value && value.length);
 };
 
+//Address Schema
+var AddressSchema = new Schema({
+    name: String,
+    address: String,
+    city: String,
+    state: String,
+    zip: String
+    }, {_id: false});
+mongoose.model('Address', AddressSchema);
+
+//Billing Schema
+var BillingSchema = new Schema({
+    cardtype: {type: String, enum:['Visa','MasterCard','Amex']},
+    name: String,
+    number:String,
+    expiremonth:Number,
+    expireyear:Number,
+    address:[AddressSchema]
+    },{_id:false});
+mongoose.model('Billing',BillingSchema);
+
+/**
+ * Product Schema
+ */
+var ProductSchema = new Schema({
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    productName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    productDecs: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    imageFile:String,
+    price:Number,
+    instock:Number
+});
+
+/**
+ * Validations
+ */
+ProductSchema.path('productName').validate(function(productName) {
+    return !!productName;
+}, 'productName cannot be blank');
+
+ProductSchema.path('productDecs').validate(function(productDecs) {
+    return !!productDecs;
+}, 'productDecs cannot be blank');
+
+ProductSchema.path('price').validate(function(price) {
+    return !!price;
+}, 'price cannot be blank');
+
+ProductSchema.path('instock').validate(function(instock) {
+    return !!instock;
+}, 'instock cannot be blank');
+
+ProductSchema.path('imageFile').validate(function(imageFile) {
+    return !!imageFile;
+}, 'imageFile cannot be blank');
+/**
+ * Statics
+ */
+ProductSchema.statics.load = function(id, cb) {
+    this.findOne({
+        _id: id
+    }).populate('user', 'name username').exec(cb);
+};
+
+mongoose.model('Product', ProductSchema);
+
+
+//Product Quantity Schema
+var ProductQuantitySchema = new Schema({
+    quantity: Number,
+    product: [ProductSchema]
+    },{_id:false});
+mongoose.model('ProductQuantity',ProductQuantitySchema);
+
+//Order Schema
+var OrderSchema = new Schema({
+    userid: String,
+    items:[ProductQuantitySchema],
+    shipping: [AddressSchema],
+    billing: [BillingSchema],
+    status:{type: String, default:'pending'},
+    timestamp:{type:Date,default:Date.now}
+    });
+mongoose.model('Order',OrderSchema);
+
 /**
  * User Schema
  */
@@ -45,6 +141,9 @@ var UserSchema = new Schema({
         type: String,
         default: 'local'
     },
+    shipping: [AddressSchema],
+    billing: [BillingSchema],
+    cart: [ProductQuantitySchema],
     salt: String,
     facebook: {},
     twitter: {},
@@ -136,3 +235,9 @@ UserSchema.methods = {
 };
 
 mongoose.model('User', UserSchema);
+
+//Add other user dependent schemas
+
+
+
+//Add other models for the shopping cart

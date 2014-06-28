@@ -60,6 +60,8 @@ exports.create = function(req, res, next) {
 
     // Hard coded for now. Will address this with the user permissions system in v0.3.5
     user.roles = ['authenticated'];
+    user.shipping.push({name:'',address:'',city:'',state:'',zip:''}); 
+    user.billing.push({cardtype:'Visa', name: '', number: '',expiremonth:0,expireyear:2014,address:[{name:'',address:'',city:'',state:'',zip:''}]});
     user.save(function(err) {
         if (err) {
             switch (err.code) {

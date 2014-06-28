@@ -1,0 +1,56 @@
+<section data-ng-controller="ProductsController">
+    <form name="productForm" class="form-horizontal col-md-6" role="form" data-ng-submit="create(productForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && productForm.productName.$invalid }">
+            <label mean-token="'create-productName'" class="col-md-3 control-label">ProductName</label>
+            <div class="col-md-9">
+                <input name="productName" type="text" class="form-control" data-ng-model="productName" id="productName" placeholder="Product Name" required>
+                <div ng-show="submitted && productForm.productName.$invalid" class="help-block">
+                    <p ng-show="productForm.productName.$error.required">ProductName is required</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && productForm.productDecs.$invalid }">
+            <label mean-token="'create-productDecs'" for="productDecs" class="col-md-3 control-label">Product Description</label>
+            <div class="col-md-9">
+                <textarea name="productDecs" data-ng-model="productDecs" id="productDecs" cols="30" rows="10" placeholder="Product Description" class="form-control" required></textarea>
+                <div ng-show="submitted && productForm.productDecs.$invalid" class="help-block">
+                    <p ng-show="productForm.productDecs.$error.required">Product Description is required</p>
+                </div>
+            </div>
+        </div>
+        <!--add price, instock and imageFile input box-->
+        <div class="form-group" ng-class="{ 'has-error' : submitted && productForm.price.$invalid }">
+            <label mean-token="'create-price'" for="price" class="col-md-3 control-label">Price</label>
+            <div class="col-md-9">
+                <input type="text" name="price" data-ng-model="price" id="price" cols="30" rows="10" placeholder="Product Price" class="form-control" required></textarea>
+                <div ng-show="submitted && productForm.price.$invalid" class="help-block">
+                    <p ng-show="productForm.price.$error.required">Product Price is required</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && productForm.instock.$invalid }">
+            <label mean-token="'create-instock'" for="instock" class="col-md-3 control-label">Instock Number</label>
+            <div class="col-md-9">
+                <input type='text' name="instock" data-ng-model="instock" id="instock" cols="30" rows="10" placeholder="Instock Number" class="form-control" required></textarea>
+                <div ng-show="submitted && productForm.instock.$invalid" class="help-block">
+                    <p ng-show="productForm.instock.$error.required">Instock number is required</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && productForm.imageFile.$invalid }">
+            <label mean-token="'create-imageFile'" for="imageFile" class="col-md-3 control-label">Upload Image</label>
+            <div class="col-md-9">
+                <input type='text' name="imageFile" data-ng-model="imageFile" id="imageFile" cols="30" rows="10" placeholder="Image Path" class="form-control" required></textarea>
+                <div ng-show="submitted && productForm.imageFile.$invalid" class="help-block">
+                    <p ng-show="productForm.imageFile.$error.required">Image Path is required</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+        </div>
+    </form>
+</section>

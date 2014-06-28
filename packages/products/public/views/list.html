@@ -1,0 +1,20 @@
+<section data-ng-controller="ProductsController" data-ng-init="find()">
+    <div class="container">
+        <p>Find {{products.length}} items</p>
+        <hr>
+        <div data-ng-repeat="product in products" class="col-sm-4">
+                <p><a data-ng-href="#!/products/{{product._id}}"><img class='listImg' ng-click='setProduct(product._id)' ng-src='/products/assets/img/{{product.imageFile}}Medium.jpeg'/></a></p>
+                <p>{{product.productName}}</p>
+                <span data-ng-if="hasAuthorization(product)">
+                    <a class="btn" href="/#!/products/{{product._id}}/edit">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a class="btn" data-ng-click="remove(product);">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </span>
+            <p>{{product.price|currency}}</p>
+            <br>
+        </div>
+    </div>
+</section>

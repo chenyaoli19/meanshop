@@ -1,0 +1,22 @@
+<section data-ng-controller="ProductsController" data-ng-init="findOrders()">
+	<div class='listItem' ng-repeat='order in orders'>
+		<p class='itemTitle'>Order #{{$index+1}}</p>
+		<p class='prodDesc'>Placed {{order.timestamp|date}}</p>
+		<p class='status'><span><b>Status:</b></span>{{order.status}}</p>
+		<div class='container' ng-repeat='item in order.items' ng-init='product=item.product[0]'>
+			<div class='col-md-8'>
+				<img class='listImg' ng-click='setProduct(product._id)' ng-src='/products/assets/img/{{product.imageFile}}Small.jpeg'/>
+				<span class='prodName'>{{product.productName}}</span>
+			</div>
+			<div class='col-md-4'>
+				<span class='price'>{{product.price|currency}}</span>
+				<label class='quantity'>{{item.quantity}}</label>
+				<label class='quantity'>Quantity</label>
+			</div>
+		</div>
+		<hr>
+	</div>
+	<div>
+		<span class='button' ng-click='goTo("/products")'>Continue Shopping</span>
+	</div>
+</section>
