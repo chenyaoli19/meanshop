@@ -127,7 +127,6 @@ heroku config:set NODE_ENV=production
 ## Reference
   * [Node.js, MongoDB, and AngularJS Web Development by Brad Dayley](http://www.amazon.com/Node-js-MongoDB-AngularJS-Development-Developers/dp/0321995783/ref=sr_1_1?ie=UTF8&qid=1404013795&sr=8-1&keywords=Brad+Dayley)
   * [mean.io](http://mean.io/#!/docs)
-  * [mean.io blog](http://blog.mean.io/)
 
 ## License
 [The MIT License](http://opensource.org/licenses/MIT)
