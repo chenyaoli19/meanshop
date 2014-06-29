@@ -1,6 +1,11 @@
 # THE MEAN SHOP
 
-THE MEAN SHOP is a small demonstration project I built which is based on the young and new MEAN stack framework [mean.io](http://mean.io/#!/) 
+THE MEAN SHOP is a small demonstration project I built which is based on the young and new MEAN stack framework [mean.io](http://mean.io/#!/). It utilizes RESTful calls to interact with backend database which is powered by mongodb.
+
+MEAN is a boilerplate that provides a nice starting point for [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. It is designed to give you a quick and organized way to start developing MEAN based web apps with useful modules like Mongoose and Passport pre-bundled and configured. 
+
+## Demo
+The demo can be accessed here at [mean shop](http://quiet-taiga-8190.herokuapp.com/).
 
 ## Prerequisites
 * Node.js - Download and Install [Node.js](http://www.nodejs.org/download/). You can also follow [this gist](https://gist.github.com/isaacs/579814) for a quick and easy way to install Node.js and npm
@@ -20,77 +25,25 @@ $ npm install -g bower
 $ npm install -g grunt-cli
 ```
 
-## Additional Packages
-* Express - Defined as npm module in the [package.json](package.json) file.
-* Mongoose - Defined as npm module in the [package.json](package.json) file.
-* Passport - Defined as npm module in the [package.json](package.json) file.
-* AngularJS - Defined as bower module in the [bower.json](bower.json) file.
-* Twitter Bootstrap - Defined as bower module in the [bower.json](bower.json) file.
-* UI Bootstrap - Defined as bower module in the [bower.json](bower.json) file.
-
-## Quick Install
-  The quickest way to get started with MEAN is to install the `meanio` package from NPM.
-
-  Install MEAN CLI:
-
-    $ [sudo] npm install -g meanio@latest
-    $ mean init <myApp>
-    $ cd <myApp> && npm install
-
-  We recommend using [Grunt](https://github.com/gruntjs/grunt-cli) to start the server:
-
-    $ grunt
-
-  If grunt aborts because of JSHINT errors, these can be overridden with the `force` flag:
-
-    $ grunt -f
-
-  Alternatively, when not using `grunt` you can run:
-
-    $ node server
-
-  Then, open a browser and go to:
-
-    http://localhost:3000
-
-
-## Troubleshooting
-During install some of you may encounter some issues.
-
-Most issues can be solved by one of the following tips, but if are unable to find a solution feel free to contact us via the repository issue tracker or the links provided below.
-
-#### Update NPM, Bower or Grunt
-Sometimes you may find there is a weird error during install like npm's *Error: ENOENT*. Usually updating those tools to the latest version solves the issue.
-
-* Updating NPM:
+## Up and running locally
+* Download the source code from GitHub.
 ```
-$ npm update -g npm
+$ mkdir meanshop
+$ cd meanshop
+$ git clone git://github.com/chenyaoli19/meanshop.git
 ```
-
-* Updating Grunt:
+* Make sure all dependencies are installed. Cd to your project's root directory, and install all node modules needed.
 ```
-$ npm update -g grunt-cli
+$ npm install
 ```
-
-* Updating Bower:
+* Make sure you followed the prerequisites and installed mongodb. If your system PATH variable includes the location of the mongod binary and if you use the default data directory (i.e., /data/db), simply enter mongod at the system prompt:
 ```
-$ npm update -g bower
+$ mongod
 ```
-
-#### Cleaning NPM and Bower cache
-NPM and Bower has a caching system for holding packages that you already installed.
-We found that often cleaning the cache solves some troubles this system creates.
-
-* NPM Clean Cache:
+* Run the app. And open your browser type in localhost:3000. Now you will see the app up and running! 
 ```
-$ npm cache clean
+$ grunt
 ```
-
-* Bower Clean Cache:
-```
-$ bower cache clean
-```
-
 
 ## Configuration
 All configuration is specified in the [server/config](server/config/) folder, particularly the [config.js](server/config/config.js) file and the [env](server/config/env/) files. Here you will need to specify your application name, database name, and hook up any social app keys if you want integration with Twitter, Facebook, GitHub, or Google.
@@ -118,28 +71,6 @@ If you are using node instead of grunt, it is very similar:
 
 > NOTE: Running Node.js applications in the __production__ environment enables caching, which is disabled by default in all other environments.
 
-## Maintaining your own repository
-After initializing a project, you'll see that the root directory of your project is already a git repository. MEAN uses git to download and update its own code. To handle its own operations, MEAN creates a remote called `upstream`. This way you can use git as you would in any other project.
-
-To maintain your own public or private repository, add your repository as remote. See here for information on [adding an existing project to GitHub](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line).
-
-```
-git remote add origin <remote repository URL>
-git push -u origin master
-```
-
-
-## Getting Started
-We pre-included an article example. Check out:
-
-  * [The Model](packages/articles/server/models/article.js) - Where we define our object schema.
-  * [The Controller](packages/articles/server/controllers/articles.js) - Where we take care of our backend logic.
-  * [NodeJS Routes](packages/articles/server/routes/articles.js) - Where we define our REST service routes.
-  * [AngularJs Routes](packages/articles/public/routes/articles.js) - Where we define our CRUD routes.
-  * [The AngularJs Service](packages/articles/public/services/articles.js) - Where we connect to our REST service.
-  * [The AngularJs Controller](packages/articles/public/controllers/articles.js) - Where we take care of  our frontend logic.
-  * [The AngularJs Views Folder](packages/articles/public/views) - Where we keep our CRUD views.
-
 ## Heroku Quick Deployment
 Before you start make sure you have the [Heroku toolbelt](<https://toolbelt.heroku.com/")
 installed and an accessible MongoDB instance - you can try [MongoHQ](http://www.mongohq.com/)
@@ -158,9 +89,10 @@ git push heroku master
 heroku config:set NODE_ENV=production
 ```
 
-## More Information
-  * Visit us at [Linnovate.net](http://www.linnovate.net/).
-  * Visit our [Ninja's Zone](http://www.meanleanstartupmachine.com/) for extended support.
+## Reference
+  * [Node.js, MongoDB, and AngularJS Web Development by Brad Dayley](http://www.amazon.com/Node-js-MongoDB-AngularJS-Development-Developers/dp/0321995783/ref=sr_1_1?ie=UTF8&qid=1404013795&sr=8-1&keywords=Brad+Dayley)
+  * [mean.io](http://mean.io/#!/docs)
+  * [mean.io blog](http://blog.mean.io/)
 
 ## License
 [The MIT License](http://opensource.org/licenses/MIT)
