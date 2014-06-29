@@ -1,13 +1,15 @@
 # THE MEAN SHOP
 
-THE MEAN SHOP is a small demonstration project I built which is based on the young and new MEAN stack framework [mean.io](http://mean.io/#!/). It utilizes RESTful calls to interact with backend database which is powered by mongodb.
+THE MEAN SHOP is a small demonstration project I built which is based on the young and new MEAN stack framework [mean.io](http://mean.io/#!/). It utilizes RESTful calls to interact with backend database which is powered by mongodb. 
 
 MEAN is a boilerplate that provides a nice starting point for [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. It is designed to give you a quick and organized way to start developing MEAN based web apps with useful modules like Mongoose and Passport pre-bundled and configured. 
 
 ## Demo
 The demo can be accessed here at [mean shop](http://quiet-taiga-8190.herokuapp.com/).
 
-## Prerequisites
+## Up and running locally
+
+### Prerequisites
 * Node.js - Download and Install [Node.js](http://www.nodejs.org/download/). You can also follow [this gist](https://gist.github.com/isaacs/579814) for a quick and easy way to install Node.js and npm
 * MongoDB - Download and Install [MongoDB](http://docs.mongodb.org/manual/installation/) - Make sure `mongod` is running on the default port (27017).
 
@@ -25,7 +27,7 @@ $ npm install -g bower
 $ npm install -g grunt-cli
 ```
 
-## Up and running locally
+### Run the app
 * Download the source code from GitHub.
 ```
 $ mkdir meanshop
@@ -43,6 +45,39 @@ $ mongod
 * Run the app. And open your browser type in localhost:3000. Now you will see the app up and running! 
 ```
 $ grunt
+```
+
+## More about the app
+### Key features
+* Basic role based anthentication. Users can register and login to the app. 
+* Basic shopping cart functionality. Browse products, add/delete to/from cart, update shipping/billing information, keep track of the order history.
+* Admin also has a feature as adding more products in the front end app. Currently this is pre-defined in the database file, so if you download the source code and running the app locally, you need to register an admin user and assign 'admin' to its roles.
+
+### File structure
+This app is build upon the mean.io framework. The shop functionality is mainly under the package 'products' if you view the source code.
+```
+--server
+      |---config
+      |---controllers
+      |---models (defining the models for this app. including schema of user, product, order, billing address, shipping address etc.)
+      |---routes
+      |---views
+--public
+      |---auth
+      |---system
+--packages
+      |---packages
+           |---products
+                 |---app.js (configure the menu)
+                 |---server
+                        |---controllers (handles the RESTful calls)
+                        |---routes (handles routing of the RESTful calls in the controleers)
+                 |---public
+                        |---assets (product images under img subfolder)
+                        |---controllers (main logic for the angular controllers)
+                        |---routes 
+                        |---services (Products service used for the products REST endpoint)
+                        |---views (html files of the pages: order, cart, view etc.)
 ```
 
 ## Configuration
