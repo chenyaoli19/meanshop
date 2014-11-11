@@ -8,10 +8,10 @@ MEAN is a boilerplate that provides a nice starting point for [MongoDB](http://w
 The demo can be accessed here at [mean shop](http://quiet-taiga-8190.herokuapp.com/).
 
 To explore the demo, please:
-1. Click on "Register" link on the upper right of the screen.
-2. Enter your username and password to register
-3. Login to explore
-4. You may view products, add/delete product to/from cart, checkout with billing information or view your order history.
+* Click on "Register" link on the upper right of the screen.
+* Enter your username and password to register
+* Login to explore
+* You may view products, add/delete product to/from cart, checkout with billing information or view your order history.
 
 ## Up and running locally
 
